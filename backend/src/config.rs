@@ -1,4 +1,7 @@
-use std::{fs::read, path::Path};
+use std::{
+    fs::read,
+    path::{Path, PathBuf},
+};
 
 #[derive(serde::Deserialize, Debug)]
 pub struct Thing {
@@ -6,10 +9,15 @@ pub struct Thing {
     pub token: String,
     pub refresh_secs: u64,
 }
+#[derive(serde::Deserialize, Debug)]
+pub struct Persistence {
+    pub path: PathBuf,
+}
 
 #[derive(serde::Deserialize, Debug)]
 pub struct Config {
     pub thing: Thing,
+    pub persistence: Persistence,
     pub logging: log4rs::config::RawConfig,
 }
 
