@@ -3,6 +3,9 @@ thing:
   token: "changeme"
   refresh_secs: 60
 
+persistence:
+  path: key_list.bin
+
 logging:
   appenders:
     stdout:
