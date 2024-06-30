@@ -124,12 +124,15 @@ fn mos_refresh(
                         ids.len(),
                         old_len - access_list.len(),
                     );
+                    let updated = !ids.is_empty() || old_len - access_list.len() > 0;
                     for id in ids {
                         access_list.insert(id);
                     }
 
-                    if let Err(err) = serialize_1w_devices(access_list, &persistence.path) {
-                        log::error!("Failed to persist key list: {err:?}");
+                    if updated {
+                        if let Err(err) = serialize_1w_devices(access_list, &persistence.path) {
+                            log::error!("Failed to persist key list: {err:?}");
+                        }
                     }
                 }
             }
