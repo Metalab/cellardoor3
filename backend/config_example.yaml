@@ -1,0 +1,16 @@
+thing:
+  url: https://metalab.at/things/keys/door
+  token: "changeme"
+  refresh_secs: 60
+
+logging:
+  appenders:
+    stdout:
+      kind: console
+      # encoder:
+      #   kind: json
+
+  root:
+    level: debug
+    appenders:
+      - stdout
